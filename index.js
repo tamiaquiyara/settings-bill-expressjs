@@ -50,11 +50,14 @@ app.post('/action', function(req, res){
 });
 
 app.get('/actions', function(req, res){
-
+    res.render('actions', {actions: settingsBill.actions()
+    });
 });
 
-app.get('/actions/:type', function(req, res){
-
+app.get('/actions/:actionType', function(req, res){
+  const actionType = req.params.type;
+  res.render('actions', {actions: settingsBill.actionsFor(actionType)
+  });
 });
 
 
