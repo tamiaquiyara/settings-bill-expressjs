@@ -1,3 +1,4 @@
+const moment = require("moment");
 module.exports = function SettingsBill() {
 
     let smsCost;
@@ -36,7 +37,7 @@ module.exports = function SettingsBill() {
         actionList.push({
             type: action,
             cost,
-            timestamp: new Date()
+            timestamp: moment(new Date()).fromNow()
         });
     }
 
@@ -110,6 +111,15 @@ module.exports = function SettingsBill() {
         return total >= criticalLevel;
     }
 
+    function colors(){
+        if(hasReachedCriticalLevel()){
+            return "danger";
+        }
+        if(hasReachedWarningLevel()){
+            return "warning";
+        }
+    }
+
     return {
         setSettings,
         getSettings,
@@ -118,6 +128,7 @@ module.exports = function SettingsBill() {
         actionsFor,
         totals,
         hasReachedWarningLevel,
-        hasReachedCriticalLevel
+        hasReachedCriticalLevel,
+        colors
     }
 }
