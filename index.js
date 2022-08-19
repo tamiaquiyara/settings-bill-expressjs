@@ -56,7 +56,7 @@ app.get('/actions', function(req, res){
 });
 
 app.get('/actions/:actionType', function(req, res){
-  const actionType = req.params.type;
+  const actionType = req.params.actionType;
   res.render('actions', {actions: settingsBill.actionsFor(actionType)
   });
 });
