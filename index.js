@@ -62,12 +62,18 @@ app.get('/actions', function(req, res){
 });
 
 app.get('/actions/:actionType', function(req, res){
+<<<<<<< HEAD
   const actionType = req.params.type;
   const actions = settingsBill.actionsFor(actionType)
   for(let action of actions){
     action.time = moment(new Date(action.timestamp)).fromNow()
   }
   res.render('actions', {actions});
+=======
+  const actionType = req.params.actionType;
+  res.render('actions', {actions: settingsBill.actionsFor(actionType)
+  });
+>>>>>>> de37b565c723b6acaf7c756de239986dd75eef7f
 });
 
 
